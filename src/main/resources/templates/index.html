@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>账查查</title>
+    <meta name="keywords" content="Expenses Bill 账单"/>
+    <meta name="description" content="个人账本"/>
+    <link rel="icon" type="image/ico" th:href="@{/imgs/bill.svg}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script th:src="@{/js/day.js}"></script>
+</head>
+<body>
+    <div class="fline"></div>
+    <div class="main">
+        <div class="left">
+            <span id="today_day" th:text="${today_day}">2023年04月</span>
+            <div th:class="${today_date_id}" id="today_date_id">
+                <span class="day">
+                    <img th:src="@{|/imgs/${day}.png|}" th:alt="|${day}日|" id="today_day_img"/>
+                </span>
+                <span class="week" id="today_week_id" th:text="${today_week_id}">星期四</span>
+            </div>
+            <div class="cost">
+                <table cellspacing="0" cellpadding="0">
+                    <tbody>
+                        <tr>
+                            <td class="header">该日总消费</td>
+                            <td class="detail" id="amount_day" th:text="${amount_day}">￥ 0.00</td>
+                        </tr>
+                        <tr>
+                            <td class="header">
+                                <select id="selectMonth" onchange="queryByMonth()">
+                                    <option th:each="month:${monthList}" th:value="${month}" th:selected="${month==#dates.format(today,'MM')}"
+                                            th:text="${#strings.startsWith(month,'0') ? #strings.replace(month,'0','') : month}"></option>
+                                </select>月总消费
+                            </td>
+                            <td class="detail" id="amount_month" th:text="${amount_month}">￥ 0.00</td>
+                        </tr>
+                        <tr>
+                            <td class="header">
+                                <select id="selectYear" onchange="queryByYear()">
+                                    <option th:each="year:${yearList}" th:value="${year}" th:selected="${year==#dates.format(today,'yyyy')}" th:text="${year}"></option>
+                                </select>年总消费
+                            </td>
+                            <td class="detail" id="amount_year" th:text="${amount_year}">￥ 0.00</td>
+                        </tr>
+                        <tr><td rowspan="2" colspan="2">
+                            <p class="header">增加消费记录</p>
+                            <div class="txtb">
+                                <p>金额：<input type="text" name="amount" id="amount" placeholder="消费金额"></p>
+                            </div>
+                            <div class="txtb">
+                                <p>描述：<input type="text" name="description" id="description" placeholder="消费用途"></p>
+                            </div>
+                            <div class="txtb">
+                                <input type="text" name="todayDate" id="todayDate" style="display: none" th:value="${curDate}">
+                                <input type="submit" value="点击提交" class="btn" onclick="addDebit()">
+                            </div>
+                        </td></tr>
+                        <tr></tr>
+                        <tr><td colspan="2">
+                            <p class="header">当天的消费记录如下：</p>
+                            <ul type="circle" id="detail">
+                                <li th:if="${#arrays.isEmpty(details)}">暂无记录</li>
+                                <li th:each="detail:${details}" th:text="${detail}"></li>
+                            </ul>
+                        </td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="right">
+            <table id="yangli">
+                <thead>
+                    <tr>
+                        <th class="mon">星期一</th>
+                        <th class="tues">星期二</th>
+                        <th class="wed">星期三</th>
+                        <th class="thur">星期四</th>
+                        <th class="fri">星期五</th>
+                        <th class="sat">星期六</th>
+                        <th class="sun">星期日</th>
+                    </tr>
+                </thead>
+                <tr th:each="weekList:${calendarList}" th:class="|week${weekListStat.index+1}|">
+                    <td th:each="day:${weekList}" th:class="${day.tdClass}" th:attr="tag=${day.tag}">
+                        <div class="ri" th:text="${day.day}"></div>
+                        <div class="todaylogo" th:if="${day.dayTag} == 0"></div>
+                        <div class="yesterdaylogo" th:if="${day.dayTag} == -1"></div>
+                        <div class="tomorrowlogo" th:if="${day.dayTag} == 1"></div>
+                        <div class="premonth" th:if="${day.monthTag} == 0"></div>
+                        <div class="nextmonth" th:if="${day.monthTag} == 2"></div>
+                    </td>
+                </tr>
+            </table>
+            <script th:inline="javascript">
+                var dayArr = [(${dayArr})];
+                FixRili_Table("yangli");
+            </script>
+        </div>
+    </div>
+    <div class="fline"></div>
+</body>
+</html>

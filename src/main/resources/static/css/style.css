@@ -1,0 +1,330 @@
+/*	@charset "utf-8";	*/
+* {
+    font-family: "微软雅黑","苹方","黑体",Simsun;
+    border: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    text-align: center;
+    font-size: 12px;
+    line-height: 160%;
+    overflow-y: yes;
+    background: #fff;
+    height:100%;
+}
+
+img {
+    border: none;
+}
+
+div {
+    overflow: hidden;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: #666;
+}
+
+a:hover {
+    color: #c00;
+}
+
+.main {
+    clear: both;
+    width: 1500px;
+    margin: 1% 0% 1% 5%;
+}
+
+.txtb p {
+    display: block;
+    font-size: 16px;
+}
+
+.txtb input {
+    background: none;
+    border: 1px solid #d4710e96;
+    outline: greenyellow;
+    margin-top: 6px;
+    font-size: 14px;
+}
+
+/*提交按钮样式*/
+.btn {
+    display: block;
+    cursor: pointer;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.left {
+    float: left;
+    width: 348px;
+    min-height: 700px;
+    overflow: hidden;
+    margin: 0px auto;
+    background-color: #ffffff;
+    background-image: url("../imgs/today_bg.png");
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+
+.left>span {
+    display: block;
+    width: 270px;
+    height: 27px;
+    margin: 37px auto 26px;
+    line-height: 27px;
+    font-size: 21px;
+    font-weight: bold;
+    color: #cc6600;
+    text-align: center;
+    overflow: hidden;
+}
+
+.left .date,.date_2 {
+    width: 164px;
+    overflow: hidden;
+    margin: 0% auto 5% auto;
+    position: relative;
+    top: 0px;
+}
+
+.left .date span,.left .date_2 span {
+    display: block;
+}
+
+.left .date .day,.left .date_2 .day {
+    width: 165px;
+    height: 130px;
+    overflow: hidden;
+    font-family: SimHei,sans-serif;
+    font-size: 130px;
+    color: #cc6600;
+    text-align: center;
+    line-height: 130px;
+}
+
+.left .date .week,.left .date_2 .week {
+    width: 165px;
+    height: 29px;
+    background-image: url("../imgs/week_bg.png");
+    background-repeat: no-repeat;
+    overflow: hidden;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 29px;
+    margin-bottom: 6px;
+}
+
+.left .date_2 .day {
+    color: #e64b47;
+}
+
+.left .date_2 .week {
+    background-image: url("../imgs/week_bg_2.png");
+}
+
+.left .cost {
+    width: 267px;
+    border: 1px solid #c60;
+    overflow: hidden;
+    margin: 0px auto;
+}
+
+.left .cost table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.left .cost td {
+    border: 2px solid #c60;
+}
+
+.left .cost td {
+    padding-left: 0;
+}
+
+.left .cost ul {
+    overflow: hidden;
+}
+
+.left .cost ul li {
+    font-size: 15px;
+    color: #000000;
+    text-align: center;
+    line-height: 27px;
+    overflow: hidden;
+}
+
+.left .cost .header {
+    line-height: 24px;
+    font-weight: bold;
+    text-align: center;
+    font-size: 16px;
+}
+
+.left .cost .detail {
+    width: 118px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.right .premonth {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: url("../imgs/shanggeyue.png");
+    width: 57px;
+    height: 57px;
+}
+
+.right .nextmonth {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    background: url("../imgs/xiageyue.png");
+    width: 57px;
+    height: 57px;
+}
+
+.right table {
+    width: 100%;
+}
+
+.right th {
+    background: #cc6600;
+    line-height: 46px;
+    width: 14.2%;
+    text-align: center;
+    font-size: 18px;
+    color: #ffffff;
+}
+
+.right th.xq0,.right th.xq6 {
+    background: #e64b47;
+}
+
+.right td {
+    width: 14.2%;
+    text-align: center;
+    height: 106px;
+    border: 1px solid #ddd;
+    color: #000;
+    position: relative;
+}
+
+.right .ri {
+    height: 30px;
+    font-size: 30px;
+    font-weight: bold;
+    color: #696969;
+    line-height: 30px;
+}
+
+.right .ri a {
+    color: #666;
+}
+
+.right .ri a:hover {
+    color: #cc6600;
+}
+
+.right .xq0 .ri a,.right .xq6 .ri a {
+    color: #ff3333;
+}
+
+.right .xq0 .ri a:hover,.right .xq6 .ri a:hover {
+    color: #cc3300;
+}
+
+.right .noyue {
+    color: #aaa;
+    background: #eee;
+}
+
+.right .today {
+    background: rgba(255, 240, 0, 0.3);
+}
+
+.right .todaylogo {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: url("../imgs/jintian.png");
+    width: 57px;
+    height: 57px;
+}
+
+.right .yesterdaylogo {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: url("../imgs/zuotian.png");
+    width: 57px;
+    height: 57px;
+}
+
+.right .tomorrowlogo {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    background: url("../imgs/mingtian.png");
+    width: 57px;
+    height: 57px;
+}
+
+#rili th div,#rili td div {
+    width: 82px;
+}
+
+.fline {
+    background: url("../imgs/fline.gif");
+    height: 12px;
+}
+
+/*浏览器自适应*/
+#w1200 .main {
+    width: 1200px;
+}
+
+#w1200 .right {
+    width: 818px;
+}
+
+#w1000 .main {
+    width: 980px;
+}
+
+#w1000 .right {
+    width: 598px;
+}
+
+@media all and ( max-width : 1500px )and ( min-width : 1200px ) {
+    .main {
+        width:1200px;
+    }
+
+    .right {
+        width: 818px;
+    }
+}
+
+@media all and ( max-width: 1200px ) {
+    .main {
+        width:980px;
+    }
+
+    .right {
+        width: 598px;
+    }
+}

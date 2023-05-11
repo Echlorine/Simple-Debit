@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="xyz.echocolate.debit.dao.ExpensesMapper">
+
+    <sql id="selectFields">
+        id, `date`, amount, description
+    </sql>
+
+    <sql id="insertFields">
+        `date`, amount, description
+    </sql>
+
+    <select id="selectById" resultType="Expenses">
+        select <include refid="selectFields"></include>
+        from expenses
+        where id = #{id}
+    </select>
+
+    <select id="selectByDay" resultType="Expenses">
+        select <include refid="selectFields"></include>
+        from expenses
+        where `date` = #{date}
+    </select>
+
+    <select id="selectByMonth" resultType="Expenses">
+        select <include refid="selectFields"></include>
+        from expenses
+        where date_format(`date`, '%Y-%m') = date_format(#{month}, '%Y-%m')
+    </select>
+
+    <select id="selectByYear" resultType="Expenses">
+        select <include refid="selectFields"></include>
+        from expenses
+        where date_format(`date`, '%Y') = date_format(#{year}, '%Y')
+    </select>
+
+    <insert id="insertDebit" parameterType="Expenses" keyProperty="id">
+        insert into expenses (<include refid="insertFields"></include>)
+        values(#{date}, #{amount}, #{description})
+    </insert>
+</mapper>

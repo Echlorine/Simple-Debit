@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>账查查·登录</title>
+    <meta name="keywords" content="Expenses Bill 账单"/>
+    <meta name="description" content="个人账本"/>
+    <link rel="icon" type="image/ico" th:href="@{/imgs/bill.svg}">
+    <link rel="shortcut icon" type="image/ico" th:href="@{/imgs/bill.svg}">
+    <link rel="apple-touch-icon" type="image/ico" th:href="@{/imgs/bill.svg}">
+
+    <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+
+    <script type="text/javascript" th:src="@{/js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{/js/vector.js}"></script>
+</head>
+<body>
+<div id="container">
+    <div id="output">
+        <div class="containerT">
+            <h1>Login Page</h1>
+            <form class="form" method="post" th:action="@{/login}">
+                <input name="username" type="text" th:value="${param.username}">
+                <input name="password" type="password" th:value="${param.password}">
+                <table>
+                    <tr>
+                        <td>
+                            <input type="submit" value="提交">
+                            <input type="reset" value="重置">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function(){
+    Victor("container", "output");  // 登录背景函数
+    $("#entry_name").focus();
+    $(document).keydown(function(event){
+        if(event.keyCode==13){
+            $("#entry_btn").click();
+        }
+    });
+});
+</script>
+</body>
+</html>
